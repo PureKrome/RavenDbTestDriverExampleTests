@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RavenDbTestDriverExampleTests": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "RavenServerTestPath": "C:\\RavenDb\\RavenDB-4.0.0-rc-40025-windows-x64\\Server\\raven.server.dll"
+      }
+    }
+  }
+}
