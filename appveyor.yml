@@ -5,9 +5,9 @@ os: Visual Studio 2017
 pull_requests:
   do_not_increment_build_number: true
 environment:
-  RavenServerDirectory: a
-  RavenServerDownloadDestinationFile: b
-  RavenServerTestPath: c
+  RavenServerDirectory: '%temp%\raven-server'
+  RavenServerDownloadDestinationFile: '%temp%\raven-server.zip'
+  RavenServerTestPath: '%temp%\%RavenServerDirectory%\server\Raven.Server.dll'
 
 # Override the 'version' if this is a GH-tag-commit -or- this is a custom branch (i.e not 'master').
 init:
@@ -18,7 +18,7 @@ init:
       Get-ChildItem Env:
 
       Write-Output "Downloading RavenDb 4.0.0-rc-40025 ..."
-      (new-object net.webclient).DownloadFile('https://daily-builds.s3.amazonaws.com/RavenDB-4.0.0-rc-40025-windows-x64.zip',  $env:RavenServerDownloadDestinationFile)
+      (new-object net.webclient).DownloadFile('https://daily-builds.s3.amazonaws.com/RavenDB-4.0.0-rc-40025-windows-x64.zip', $env:Temp + $env:RavenServerDownloadDestinationFile)
 
       Write-Output "Unzipping RavenDb from" + $env:RavenServerDownloadDestinationFile + " to " + $env:RavenServerDirectory
       expand-archive -Path $env:RavenServerDownloadDestinationFile -DestinationPath  $env:RavenServerDirectory
