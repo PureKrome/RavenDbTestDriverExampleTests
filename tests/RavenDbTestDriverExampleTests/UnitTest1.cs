@@ -7,7 +7,7 @@ using Xunit;
 
 namespace RavenDbTestDriverExampleTests
 {
-    public class UnitTest1 : RavenTestDriver<MyRavenDbLocator>
+    public class UnitTest1 : RavenTestDriver<CustomRavenServerLocator>
     {
         public class TestDocumentByName : AbstractIndexCreationTask<TestDocument>
         {
